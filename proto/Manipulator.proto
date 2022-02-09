@@ -1,0 +1,34 @@
+/**
+ * Created by Daniel Dorfmeister on 2019-04-11
+ *
+ * @author Daniel Dorfmeister daniel.dorfmeister@fh-hagenberg.at
+ */
+
+syntax = "proto3";
+package HeuristicLab.TruffleConnector.Messages;
+
+import "TreeNode.proto";
+
+option java_package = "at.fh.hagenberg.aist.hlc.core.messages";
+option java_multiple_files = true;
+
+/**
+ * Request by the Manipulator operator.
+ */
+message ManipulatorRequest {
+  // ID of the solution to manipulate/mutate
+  int64 solutionId = 1; // UUID
+}
+
+/**
+ * Response to ManipulatorRequest.
+ */
+message ManipulatorResponse {
+  // ID of the original solution
+  int64 solutionId = 1;
+  // ID of the manipulated solution
+  int64 manipulatedSolutionId = 2;
+  // root node of the manipulated tree
+  TreeNode tree = 3;
+}
+ 

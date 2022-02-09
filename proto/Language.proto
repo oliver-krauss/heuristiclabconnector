@@ -1,0 +1,81 @@
+/**
+ * Created by Daniel Dorfmeister on 2019-05-15
+ *
+ * @author Daniel Dorfmeister daniel.dorfmeister@fh-hagenberg.at
+ */
+ 
+syntax = "proto3";
+package HeuristicLab.TruffleConnector.Messages;
+
+option java_package = "at.fh.hagenberg.aist.hlc.core.messages";
+option java_multiple_files = true;
+
+/**
+ * Contains meta data and grammar for a language.
+ */
+message Language {
+  // ID of the language
+  int64 id = 1;
+  // name of the language
+  string name = 2;
+  // description of the language
+  string description = 3;
+  // symbols of the language that are not grouped
+  repeated Symbol symbols = 4;
+  // group of symbols
+  repeated GroupSymbol groups = 5;
+}
+
+/**
+ * Represents a symbol of a language.
+ * example for "if" symbol:
+ *   minimumArity = 2
+ *   maximumArity = 2
+ *   allowedChildSymbols = {(childId: comparison, argumentIndices: {0}), (booleanOperation, {0}), (statement, {1})}
+ */
+message Symbol {
+  // ID of the symbol
+  int64 id = 1;
+  // name of the symbol (used in tree)
+  string name = 2;
+  // description of the symbol
+  string description = 3;
+  // minimum number of subtrees (0 for terminals)
+  int32 minimumArity = 4;
+  // maximum number of subtrees (0 for terminals)
+  int32 maximumArity = 5;
+  // how often a symbol should occur in the initial population (default = 1)
+  double initialFrequency = 6;
+  // whether the symbol should be used
+  bool enabled = 7;
+  // allowed child symbols (allowed child symbols from parent GroupSymbol are inherited)
+  repeated ChildSymbolConfiguration allowedChildSymbols = 8;
+}
+
+/**
+ * Is used to configure an allowed child symbol for a symbol.
+ * example for a full grammar: https://dev.heuristiclab.com/trac.fcgi/browser/stable/HeuristicLab.Problems.DataAnalysis.Symbolic/3.4/Grammars/TypeCoherentExpressionGrammar.cs#L173
+ */
+message ChildSymbolConfiguration {
+  // ID of Symbol or GroupSymbol
+  int64 childId = 1;
+  // argument indices for the symbol (leave empty if symbol is valid everywhere)
+  repeated int32 argumentIndices = 2;
+}
+
+/**
+ * Represents a group of symbols.
+ */
+message GroupSymbol {
+  // ID of the group
+  int64 id = 1;
+  // name of the group
+  string name = 2;
+  // symbols of the group
+  repeated Symbol symbols = 3;
+  // subgroups of the group
+  repeated GroupSymbol groups = 4;
+  // allowed child symbols
+  repeated ChildSymbolConfiguration allowedChildSymbols = 8;
+}
+ 

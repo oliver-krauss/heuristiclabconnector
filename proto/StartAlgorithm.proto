@@ -1,0 +1,65 @@
+/**
+ * Created by Daniel Dorfmeister on 2019-02-22
+ *
+ * @author Daniel Dorfmeister daniel.dorfmeister@fh-hagenberg.at
+ */
+ 
+syntax = "proto3";
+package HeuristicLab.TruffleConnector.Messages;
+
+import "google/protobuf/timestamp.proto";
+
+option java_package = "at.fh.hagenberg.aist.hlc.core.messages";
+option java_multiple_files = true;
+
+/**
+ * The configuration of a symbol.
+ */
+message SymbolConfiguration {
+  // ID of the symbol to configure
+  int64 symbolId = 1;
+  // relative frequency of the symbol in randomly created trees (default = 1)
+  double initialFrequency = 2;
+  // whether the symbol can be used
+  bool enabled = 3;
+}
+
+/**
+ * The definition of the problem to solve.
+ */
+message ProblemDefinition {
+  // ID of the language of the source code
+  int64 languageId = 1;
+  // source code containing the function that should be optimized
+  string sourceCode = 2;
+  // input data for the function to be tested (arguments)
+  string input = 3;
+  // output data for the function to be tested (results matching input)
+  string output = 4;
+  // name of the function that should be optimized
+  string functionName = 5;
+}
+
+/**
+ * Message that contains metadata about the problem to solve.
+ */
+message StartAlgorithmRequest {
+  // configuration of the algorithm
+  map<string, string> optionConfiguration = 1;
+  // configuration of the symbols of the language
+  repeated SymbolConfiguration symbolConfiguration = 2;
+  // definition of the problem to solve
+  ProblemDefinition problemDefinition = 3;
+  // start time of the algorithm run
+  google.protobuf.Timestamp started = 4;
+}
+
+/**
+ * Response to StartAlgorithmRequest.
+ */
+message StartAlgorithmResponse {
+  // whether the request was valid and the algorithm could have been started
+  bool success = 1;
+  // error message in case success is false
+  string errorMessage = 2;
+}

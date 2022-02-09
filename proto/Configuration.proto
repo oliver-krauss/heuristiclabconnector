@@ -1,0 +1,30 @@
+/**
+ * Created by Daniel Dorfmeister on 2019-05-15
+ *
+ * @author Daniel Dorfmeister daniel.dorfmeister@fh-hagenberg.at
+ */
+ 
+syntax = "proto3";
+package HeuristicLab.TruffleConnector.Messages;
+
+import "Language.proto";
+import "Option.proto";
+
+option java_package = "at.fh.hagenberg.aist.hlc.core.messages";
+option java_multiple_files = true;
+
+/**
+ * Message that requests configuration data for the problem and operators.
+ */
+message ConfigurationRequest {
+}
+
+/**
+ * Response to ConfigurationRequest.
+ */
+message ConfigurationResponse {
+  // all supported languages
+  repeated Language languages = 1;
+  // config for the operators
+  OptionGroup optionGroup = 2;
+}

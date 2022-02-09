@@ -1,0 +1,21 @@
+/**
+ * Created by Daniel Dorfmeister on 2019-10-02
+ *
+ * @author Daniel Dorfmeister daniel.dorfmeister@fh-hagenberg.at
+ */
+ 
+syntax = "proto3";
+package HeuristicLab.TruffleConnector.Messages;
+
+option java_package = "at.fh.hagenberg.aist.hlc.core.messages";
+option java_multiple_files = true;
+
+/**
+ * Configuration of a worker, sent when a worker registers with the broker. 
+ */
+message WorkerConfiguration {
+  // IDs of all languages supported by the worker
+  repeated int64 supportedLanguages = 1;
+  // whether the worker supports getting the config (see Configuration.proto)
+  bool isConfigWorker = 2;
+}

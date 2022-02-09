@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ /*
+  ~  * Copyright (c) 2022 the original author or authors.
+  ~  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+  ~  *
+  ~  * This Source Code Form is subject to the terms of the Mozilla Public
+  ~  * License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~  */
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>heuristiclab-connector</artifactId>
+        <groupId>at.fh.hagenberg.aist.heuristiclab-connector</groupId>
+        <version>0.5.3-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>core</artifactId>
+
+    <profiles>
+        <profile>
+            <id>Linux code generation</id>
+            <activation>
+                <os>
+                    <family>!Windows</family>
+                </os>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.8</version>
+                        <executions>
+                            <execution>
+                                <configuration>
+                                    <target>
+                                        <exec executable="/bin/bash">
+                                            <arg value="../../tools/clean_proto.sh" />
+                                        </exec>
+                                        <exec executable="/bin/bash">
+                                            <arg value="../../tools/build_proto.sh" />
+                                        </exec>
+                                    </target>
+                                </configuration>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>Windows code generation</id>
+            <activation>
+                <os>
+                    <family>Windows</family>
+                </os>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.8</version>
+                        <executions>
+                            <execution>
+                                <configuration>
+                                    <target>
+                                        <exec executable="cmd.exe" spawn="true">
+                                            <arg value="/c" />
+                                            <arg value="..\..\tools\clean_proto.bat" />
+                                        </exec>
+                                        <exec executable="cmd.exe" spawn="true">
+                                            <arg value="/c" />
+                                            <arg value="..\..\tools\build_proto.bat" />
+                                        </exec>
+                                    </target>
+                                </configuration>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

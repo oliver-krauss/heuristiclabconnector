@@ -1,0 +1,3 @@
+[submodule "csharp/HeuristicLab"]
+	path = csharp/HeuristicLab
+	url = https://github.com/ddorfmeister/HeuristicLab.git

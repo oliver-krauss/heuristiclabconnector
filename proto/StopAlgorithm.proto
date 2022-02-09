@@ -1,0 +1,29 @@
+/**
+ * Created by Daniel Dorfmeister on 2019-04-18
+ *
+ * @author Daniel Dorfmeister daniel.dorfmeister@fh-hagenberg.at
+ */
+ 
+syntax = "proto3";
+package HeuristicLab.TruffleConnector.Messages;
+
+option java_package = "at.fh.hagenberg.aist.hlc.core.messages";
+option java_multiple_files = true;
+
+/**
+ * Message that informs the Truffle backend that the algorithm was stopped.
+ */
+message StopAlgorithmRequest {
+    // the execution state of the algorithm
+    ExecutionState executionState = 1;
+}
+
+/**
+ * Represents the execution state of the algorithm.
+ */
+enum ExecutionState {
+    PREPARED = 0;
+    STARTED = 1;
+    PAUSED = 2;
+    STOPPED = 3;
+}

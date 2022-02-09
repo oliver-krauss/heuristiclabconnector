@@ -1,0 +1,30 @@
+/**
+ * Created by Daniel Dorfmeister on 2019-02-22
+ *
+ * @author Daniel Dorfmeister daniel.dorfmeister@fh-hagenberg.at
+ */
+
+syntax = "proto3";
+package HeuristicLab.TruffleConnector.Messages;
+
+import "TreeNode.proto";
+
+option java_package = "at.fh.hagenberg.aist.hlc.core.messages";
+option java_multiple_files = true;
+
+/**
+ * Request by the SolutionCreator operator.
+ */
+message SolutionCreatorRequest {
+}
+
+/**
+ * Response to SolutionCreatorRequest.
+ */
+message SolutionCreatorResponse {
+  // ID of the created solution
+  int64 solutionId = 1;
+  // root node of the tree
+  TreeNode tree = 2;
+}
+ 

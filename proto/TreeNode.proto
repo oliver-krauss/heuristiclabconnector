@@ -1,0 +1,23 @@
+/**
+ * Created by Daniel Dorfmeister on 2019-04-10
+ *
+ * @author Daniel Dorfmeister daniel.dorfmeister@fh-hagenberg.at
+ */
+
+syntax = "proto3";
+package HeuristicLab.TruffleConnector.Messages;
+
+option java_package = "at.fh.hagenberg.aist.hlc.core.messages";
+option java_multiple_files = true;
+
+/**
+ * Represents a SymbolicExpressionTreeNode.
+ */
+message TreeNode {
+  // the ID of the node 
+  int64 id = 1;
+  // the ID of the symbol of the Node
+  int64 symbolId = 2;
+  // child nodes
+  repeated TreeNode children = 3;
+}

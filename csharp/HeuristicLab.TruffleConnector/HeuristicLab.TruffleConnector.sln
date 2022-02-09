@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29025.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeuristicLab.TruffleConnector-3.3", "HeuristicLab.TruffleConnector\3.3\HeuristicLab.TruffleConnector-3.3.csproj", "{6E35A82C-01DE-48D0-9DA8-BDF7A1F3EA5B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BC11CCC3-E833-4910-9077-0EBDF1D7E4B3} = {BC11CCC3-E833-4910-9077-0EBDF1D7E4B3}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3B6306BC-ADED-4A7C-83FB-24DF0AC651C3}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		HeuristicLab.snk = HeuristicLab.snk
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeuristicLab.NetMQ-4.0.0", "HeuristicLab.ExtLibs\HeuristicLab.NetMQ\4.0.0\HeuristicLab.NetMQ-4.0.0\HeuristicLab.NetMQ-4.0.0.csproj", "{BC11CCC3-E833-4910-9077-0EBDF1D7E4B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeuristicLab.TruffleConnector.Views-3.3", "HeuristicLab.TruffleConnector.Views\3.3\HeuristicLab.TruffleConnector.Views-3.3.csproj", "{F530CE0D-0BCD-430A-820D-7E518B37E5E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HeuristicLab.ExtLibs", "HeuristicLab.ExtLibs", "{0A5D7329-C497-45ED-B846-35BCAA0E2649}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E35A82C-01DE-48D0-9DA8-BDF7A1F3EA5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E35A82C-01DE-48D0-9DA8-BDF7A1F3EA5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E35A82C-01DE-48D0-9DA8-BDF7A1F3EA5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E35A82C-01DE-48D0-9DA8-BDF7A1F3EA5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC11CCC3-E833-4910-9077-0EBDF1D7E4B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC11CCC3-E833-4910-9077-0EBDF1D7E4B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC11CCC3-E833-4910-9077-0EBDF1D7E4B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC11CCC3-E833-4910-9077-0EBDF1D7E4B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F530CE0D-0BCD-430A-820D-7E518B37E5E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F530CE0D-0BCD-430A-820D-7E518B37E5E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F530CE0D-0BCD-430A-820D-7E518B37E5E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F530CE0D-0BCD-430A-820D-7E518B37E5E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BC11CCC3-E833-4910-9077-0EBDF1D7E4B3} = {0A5D7329-C497-45ED-B846-35BCAA0E2649}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {06DDD333-E8B6-44DD-A023-2B117C25AC60}
+	EndGlobalSection
+EndGlobal

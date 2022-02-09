@@ -1,0 +1,97 @@
+/**
+ * Created by Daniel Dorfmeister on 2019-05-15
+ *
+ * @author Daniel Dorfmeister daniel.dorfmeister@fh-hagenberg.at
+ */
+ 
+syntax = "proto3";
+package HeuristicLab.TruffleConnector.Messages;
+
+option java_package = "at.fh.hagenberg.aist.hlc.core.messages";
+option java_multiple_files = true;
+
+/**
+ * A group of options, represents an ITruffleItem (TruffleOption, ITruffleOperator).
+ * If the name of the option group is "SolutionCreator", "Crossover", "Manipulator" or "Evaluator",
+ * it is mapped to the according operator type.
+ * The names of options, constrained options and multi-options must be unique within the option group.
+ */
+message OptionGroup {
+  // name of the option group
+  string name = 1;
+  // description of the option group
+  string description = 2;
+  // primitive options (string, int, double etc.)
+  repeated Option options = 3;
+  // option constrained to a set of values that can have sub-options
+  repeated ConstrainedOption constrainedOptions = 4;
+  // option that can have multiple options that can have sub-options
+  repeated MultiOption multiOptions = 5;
+}
+
+/**
+ * Represents an IConstrainedValueParameter<TruffleOption>.
+ * This type of parameter is displayed as a drop-down combo box.
+ * Each valid value can have parameters itself.
+ */
+message ConstrainedOption {
+  // name of the constrained option
+  string name = 1;
+  // description of the constrained option
+  string description = 2;
+  // list of values that can be selected
+  repeated OptionGroup validValues = 3;
+  // index of default option
+  int32 default = 4;
+}
+
+/**
+ * Represents an FixedValueParameter<CheckedItemList<TruffleOption>>.
+ * This type of parameter is displayed as a list view with checkboxes.
+ * Each valid value can have parameters itself.
+ */
+ message MultiOption {
+  // name of the multi-option
+  string name = 1;
+  // description of the multi-option
+  string description = 2;
+  // list of items that can be checked
+  repeated OptionGroup items = 3;
+  // indexes of options that are checked by default
+  repeated int32 defaults = 4;
+}
+
+/**
+ * Represents an IFixedValueParameter<IStringConvertibleValue>.
+ * This type of parameter represents primitive data types.
+ */
+message Option {
+  // name of the option
+  string name = 1;
+  // description of the option
+  string description = 2;
+  // type of the option: determines data type and view
+  OptionType type = 3;
+  // default value of the option serialized as string
+  string default = 4;
+}
+
+/**
+ * Represents the implementations of IStringConvertibleValue.
+ */
+enum OptionType {
+  // mapped to IntValue (text box)
+  INT = 0;
+  // mapped to StringValue (text box)
+  STRING = 1;
+  // mapped to DoubleValue (text box)
+  DOUBLE = 2;
+  // mapped to BoolValue (checkbox)
+  BOOL = 3;
+  // mapped to PercentValue (a double value; text box)
+  PERCENT = 4;
+  // mapped to DateTimeValue (text box)
+  DATE_TIME = 5;
+  // mapped to TimeSpanValue (text box)
+  TIME_SPAN = 6;
+}

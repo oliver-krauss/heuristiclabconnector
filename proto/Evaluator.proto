@@ -1,0 +1,30 @@
+/**
+ * Created by Daniel Dorfmeister on 2019-04-11
+ *
+ * @author Daniel Dorfmeister daniel.dorfmeister@fh-hagenberg.at
+ */
+
+syntax = "proto3";
+package HeuristicLab.TruffleConnector.Messages;
+
+option java_package = "at.fh.hagenberg.aist.hlc.core.messages";
+option java_multiple_files = true;
+
+/**
+ * Request by the Evaluator operator.
+ */
+message EvaluatorRequest {
+  // ID of the solution to evaluate
+  int64 solutionId = 1; // UUID
+}
+
+/**
+ * Response to EvaluatorRequest.
+ */
+message EvaluatorResponse {
+  // ID of the evaluated solution
+  int64 solutionId = 1;
+  // quality of the evaluated solution
+  double quality = 2;
+}
+ 

@@ -1,0 +1,38 @@
+/**
+ * Created by Daniel Dorfmeister on 2019-04-18
+ *
+ * @author Daniel Dorfmeister daniel.dorfmeister@fh-hagenberg.at
+ */
+
+syntax = "proto3";
+package HeuristicLab.TruffleConnector.Messages;
+
+import "TreeNode.proto";
+
+option java_package = "at.fh.hagenberg.aist.hlc.core.messages";
+option java_multiple_files = true;
+
+/**
+ * Request by the Crossover operator.
+ */
+message CrossoverRequest {
+  // ID of the first parent solution to cross
+  int64 parentSolutionId1 = 1; // UUID
+  // ID of the second parent solution to cross
+  int64 parentSolutionId2 = 2; // UUID
+}
+
+/**
+ * Response to CrossoverRequest.
+ */
+message CrossoverResponse {
+  // ID of the first parent solution
+  int64 parentSolutionId1 = 1;
+  // ID of the second parent solution
+  int64 parentSolutionId2 = 2;
+  // ID of the child solution
+  int64 childSolutionId = 3;
+  // root node of the child tree
+  TreeNode tree = 4;
+}
+ 
